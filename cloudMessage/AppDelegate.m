@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "global.h"
 
 @interface AppDelegate ()
 
@@ -15,8 +16,36 @@
 @implementation AppDelegate
 
 
+- (void)setNav{
+    UINavigationBar *bar = [UINavigationBar appearance];
+    
+    //设置显示的颜色
+    //bar.barTintColor = [UIColor colorWithRed:116/255.0 green:215/255.0 blue:54/255.0 alpha:1.0];//62\173\176
+    //bar.backgroundColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:1.0];
+    if (CURRENT_SYS_VERSION >= 7.0) {
+        [bar setBarTintColor:[UIColor colorWithRed:0.071 green:0.060 blue:0.086 alpha:1.000]];
+        [bar setTintColor:[UIColor whiteColor]];
+    }else{
+        [bar setTintColor:[UIColor colorWithRed:0.071 green:0.060 blue:0.086 alpha:1.000]];
+    }
+    
+    //设置字体颜色
+    //bar.tintColor = [UIColor whiteColor];
+    //[bar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    [bar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,[UIFont boldSystemFontOfSize:17.0],NSFontAttributeName, nil]];
+    
+    //或者用这个都行
+    //[bar setTitleTextAttributes:@{UITextAttributeTextColor : [UIColor whiteColor]}];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    //self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    // Override point for customization after application launch.
+    self.window.backgroundColor = [UIColor whiteColor];
+    
+    [self setNav];
     return YES;
 }
 
